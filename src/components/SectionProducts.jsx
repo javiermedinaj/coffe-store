@@ -10,15 +10,23 @@ import {
 } from '@chakra-ui/react';
 import { coffes } from '../database/data';
 
+// Definimos el número máximo de productos a mostrar
+const MAX_PRODUCTS = 5;
+
 export default function ProductSimple() {
+    // Usamos slice para obtener solo los primeros MAX_PRODUCTS elementos
+    const limitedCoffes = coffes.slice(0, MAX_PRODUCTS);
+
     return (
         <>
-            <Flex flexWrap="wrap" justifyContent="space-between">
-                {coffes.map((coffee, i) => (
+        
+            <Flex flexWrap="wrap" justifyContent="center">
+                {limitedCoffes.map((coffee, i) => (
                     <Box
                         key={i}
                         role={'group'}
-                        p={6}
+                        m={6}
+                        pt={6}
                         maxW={'330px'}
                         w={'full'}
                         bg={useColorModeValue('white', 'gray.800')}
@@ -37,29 +45,17 @@ export default function ProductSimple() {
                                 src={coffee.image}
                             />
                         </Box>
-                        <Stack pt={10} align={'center'}>
-                            <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                                Brand
-                            </Text>
-                            <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+                        <Stack pt={4} pb={4} align={'center'}>
+                           
+                            <Heading fontSize={'2xl'} fontFamily={'body'} mt={2} mb={2} fontWeight={500}>
                                 {coffee.title}
                             </Heading>
-                            <Stack direction={'row'} align={'center'}>
-                                <Text fontWeight={800} fontSize={'xl'}>
-                                    {/* Aquí puedes mostrar el precio */}
-                                    {/* {coffee.price} */}
-                                </Text>
-                                <Text textDecoration={'line-through'} color={'gray.600'}>
-                                    {/* Aquí puedes mostrar el ID */}
-                                    {coffee.id}
-                                </Text>
-                            </Stack>
+                           
                         </Stack>
                     </Box>
                 ))}
             </Flex>
-        
         </>
-    
+        
     );
 }
