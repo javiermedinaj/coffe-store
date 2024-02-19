@@ -11,6 +11,8 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
+
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -20,14 +22,14 @@ export default function Navbar() {
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
-            <a href="/" target="_blank">
-              About
-            </a>
+            <Link to="/">
+              Home
+            </Link>
           </Box>
           <Box p={1}>
-            <a href="https://github.com/" target="_blank">
+            <Link to ="/products">
               Products
-            </a>
+            </Link>
           </Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={4}>

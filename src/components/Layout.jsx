@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { FaArrowUp } from 'react-icons/fa';
-
+import { Button } from '@chakra-ui/react';
 const Layout = ({ children }) => {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -26,12 +26,16 @@ const Layout = ({ children }) => {
       {children}
       <Footer />
       {showBackToTop && (
-        <button
-          className="fixed bottom-10 right-10 bg-gray-800 text-white p-3 rounded-full shadow-lg"
+        <Button
+          position="fixed"
+          bottom="20px"
+          right="20px"
           onClick={scrollToTop}
+          _hover={{ bg: 'black', color: 'white' }}
         >
-          <FaArrowUp />
-        </button>
+          <FaArrowUp
+          />
+        </Button>
       )}
     </>
   );
